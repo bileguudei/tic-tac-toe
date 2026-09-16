@@ -6,8 +6,10 @@ let squares = document.getElementsByClassName("square");
 let currentPlayer = "X";
 let Xcount = document.getElementById("playerX-Score");
 let Ycount = document.getElementById("playerO-Score");
+let DrawCount = document.getElementById("draw-Score");
 let countX = 0;
 let countO = 0;
+let countDraw = 0;
 
 function reset() {
   for (let i = 0; i < squares.length; i++) {
@@ -96,6 +98,22 @@ function bugluh() {
     countO++;
     Ycount.textContent = countO;
     alert("O win");
+    reset();
+  }
+
+  let isDraw = true;
+
+  for (let i = 0; i < squares.length; i++) {
+    if (squares[i].textContent == "") {
+      isDraw = false;
+      break;
+    }
+  }
+
+  if (isDraw) {
+    countDraw++;
+    DrawCount.textContent = countDraw;
+    alert("Draw");
     reset();
   }
 }
